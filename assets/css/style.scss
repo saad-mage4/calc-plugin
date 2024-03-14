@@ -1,0 +1,92 @@
+@mixin responsive($screen) {
+  @if ($screen == "desktop") {
+    @media (min-width: 786.1px) {
+      @content;
+    }
+  } @else if($screen == "mobile") {
+    @media (max-width: 786px) {
+      @content;
+    }
+  }
+}
+
+.col-3 {
+  width: 25%;
+  flex: 0 0 25%;
+  @include responsive("mobile") {
+    width: 100%;
+    flex: 0 0 100%;
+  }
+}
+.col-6 {
+  width: 48.1%;
+  flex: 0 0 48.1%;
+  @include responsive("mobile") {
+    width: 100%;
+    flex: 0 0 100%;
+  }
+}
+.col-12 {
+  width: 100%;
+  flex: 0 0 100%;
+}
+.btn {
+  border: 1px solid #2424c5;
+  background-color: #2424c5;
+  color: #fff;
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.d-flex {
+  display: flex;
+}
+.jcc {
+  justify-content: center;
+}
+.jcr {
+  justify-content: flex-end;
+}
+.air {
+  align-items: flex-end;
+}
+@include responsive('mobile') {
+    .btn-center {
+        justify-content: center;
+    }
+}
+.main-wrapper {
+  * {
+    box-sizing: border-box;
+  }
+  max-width: 800px !important;
+  margin-inline: auto;
+  width: 100%;
+  .fields {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    @include responsive("mobile") {
+      gap: 20px;
+    }
+    .form-group {
+      input,
+      select {
+        border: 1px solid #cecece;
+        border-radius: 5px;
+        background-color: #fff;
+        width: 100%;
+        height: 45px;
+        font-size: 16px;
+        padding-inline: 20px;
+        &[disabled] {
+          background-color: #999;
+        }
+      }
+    }
+  }
+}
